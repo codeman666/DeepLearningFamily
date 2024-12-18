@@ -1,0 +1,4 @@
+image_classification/rank1_LeNet/data
+*.pyc
+test*
+*.pth
