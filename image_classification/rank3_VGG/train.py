@@ -39,7 +39,8 @@ def main():
     json_str = json.dumps(cla_dict,indent=4)
     with open("class_indices.json","w") as json_file:
         json_file.write(json_str)
-        
+    
+      
     batch_size=32
     nw = min([os.cpu_count(),batch_size if batch_size>1 else 0,8])
     print("using {} dataloader workers every process.".format(nw))
