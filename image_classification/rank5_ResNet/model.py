@@ -8,7 +8,7 @@ class BasicBlock(nn.Module):
     def __init__(self, in_channel, out_channel, stride=1, downsample=None, **kwargs):
         super(BasicBlock, self).__init__()
         self.conv1 = nn.Conv2d(in_channels=in_channel, out_channels=out_channel, 
-                               kernel_size=3, stride=stride, padding=1,bias=False)
+                               kernel_size=3, stride=stride, padding=1,bias=False)  #bias偏置项 与后面的BN层对应
         self.bn1 = nn.BatchNorm2d(out_channel)
         self.relu = nn.ReLU()
         self.conv2 = nn.Conv2d(in_channels=out_channel, out_channels=out_channel, 
@@ -18,6 +18,7 @@ class BasicBlock(nn.Module):
         
     def forward(self, x):
         identity = x
+        # 如果需要下采样，就应用下采样层来调整输入张量的尺寸或通道数
         if self.downsample is not None:
             identity = self.downsample(x)
         
@@ -32,13 +33,14 @@ class BasicBlock(nn.Module):
         out = self.relu(out)
         return out
 
+#50层及以上用的代码
 class Bottleneck(nn.Module):
     expansion =4
     def __init__(self, in_channel, out_channel, stride=1, downsample=None, 
                  groups=1, width_per_group=64):
         super(Bottleneck, self).__init__()
         
-        width = int(out_channel * (width_per_group / 64)) * groups
+        width = int(out_channel * ((width_per_group * groups) / 64))
         self.conv1 = nn.Conv2d(in_channels=in_channel, out_channels=width,
                                kernel_size=1, stride=1, bias=False)
         self.bn1 = nn.BatchNorm2d(width)
@@ -49,7 +51,7 @@ class Bottleneck(nn.Module):
         self.conv3 = nn.Conv2d(in_channels=width, out_channels=out_channel*self.expansion,
                                kernel_size=1, stride=1, bias=False,padding=1)
         self.bn3 = nn.BatchNorm2d(out_channel*self.expansion)
-        self.relu =  nn.ReLU(inplace=True)
+        self.relu =  nn.ReLU(inplace=True) #原地操作
         self.downsample = downsample
     
     def forward(self, x):
@@ -92,9 +94,10 @@ class ResNet(nn.Module):
         self.layer3 = self._make_layer(block, 256, blocks_num[2], stride=2)
         self.layer4 = self._make_layer(block, 512, blocks_num[3], stride=2)
         if self.include_top:
-            self.avgpool = nn.AdaptiveAvgPool2d((1,1))
+            self.avgpool = nn.AdaptiveAvgPool2d((1,1)) #(1,1)输出的特征图尺寸
             self.fc = nn.Linear(512*block.expansion, num_classes)
         
+        # 对nn.Conv2d 层权重进行初始化
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
                 nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
@@ -146,6 +149,7 @@ def resnet50(num_classes=1000, include_top=True):
 def resnet101(num_classes=1000, include_top=True):
     return ResNet(Bottleneck, [3,4,23,3], num_classes=num_classes, include_top=include_top)
 
+#include_top控制模型是否包括 全连接层（即 FC层）
 def resnet50_32x4d(num_classes=1000, include_top=True):
     groups = 32
     width_per_group = 4
@@ -159,10 +163,12 @@ def resnext101_32x8d(num_classes=1000, include_top=True):
                   groups=groups, width_per_group=width_per_group)
     
 
+# # 用于做测试的的模型
 # model = resnet34()
 # print(model)
 # input_tensor = torch.randn(8, 3, 256, 256)
 # output = model(input_tensor)
 # print(output)
+
 
 

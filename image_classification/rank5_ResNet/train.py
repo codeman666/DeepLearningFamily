@@ -55,11 +55,12 @@ def main():
                                              shuffle=False,
                                              num_workers=0)
     net = resnet34()
+    # download url: https://download.pytorch.org/models/resnet34-333f7ec4.pth
     model_weight_path = "./resnet34.pth"
     assert os.path.exists(model_weight_path),"{} path does not exist.".format(model_weight_path)
     
     pretrained_dict = torch.load(model_weight_path, map_location=device)
-    model_dict = net.state_dict()
+    model_dict = net.state_dict() #存储模型所有的参数字典
     # 过滤掉 `fc` 层的权重（fc 层大小会改变）
     pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict and "fc" not in k}
     # 更新模型的 state_dict
@@ -86,7 +87,6 @@ def main():
     
     epochs = 2
     best_acc = 0.0
-    # url：https://download.pytorch.org/models/resnet34-333f7ec4.pth
     save_path = "./resNet34.pth"
     train_steps = len(train_loader)
     for epoch in range(epochs):
