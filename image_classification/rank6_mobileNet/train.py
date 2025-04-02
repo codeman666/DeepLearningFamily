@@ -8,7 +8,7 @@ import torch.optim as optim
 from torchvision import datasets, transforms
 from tqdm import tqdm
 from modelV2 import MobileNetV2
-import torchvision.models.mobilenetv2
+
 def main():
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("using {} device.".format(device))
