@@ -6,3 +6,8 @@ test*
 *.png
 *.json
 flower_data
+
+
+VOCdevkit
+object_detection/yolov3_spp/my_yolo_dataset/
+*.txt
