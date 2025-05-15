@@ -14,9 +14,14 @@ object_detection/yolov3/VOCdevkit
 !requirements.txt
 
 *.pt
-object_detection/yolov3/weights
-object_detection/yolov3/runs
+
+object_detection/yolov3/runs/train/exp
+object_dectction/yolov3/runs/train/exp
+object_dectction/datasets
 *.mp4
 
 __pycache__/
 *.pyc
+*.cache
+
+object_detection/
