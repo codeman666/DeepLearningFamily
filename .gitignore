@@ -7,7 +7,7 @@ test*
 *.json
 flower_data
 
+object_detection/datasets
+object_detection/yolov3/VOCdevkit
 
-VOCdevkit
-object_detection/yolov3_spp/my_yolo_dataset/
 *.txt
