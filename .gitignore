@@ -12,6 +12,7 @@ object_detection/yolov3/VOCdevkit
 
 *.txt
 !requirements.txt
+
 *.pt
 object_detection/yolov3/weights
 object_detection/yolov3/runs
