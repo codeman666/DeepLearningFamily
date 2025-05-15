@@ -15,3 +15,6 @@ object_detection/yolov3/VOCdevkit
 object_detection/yolov3/weights
 object_detection/yolov3/runs
 *.mp4
+
+__pycache__/
+*.pyc
