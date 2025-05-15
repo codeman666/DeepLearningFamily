@@ -82,4 +82,4 @@ def process_split(xml_list, split):
 process_split(train_xmls, 'train')
 process_split(val_xmls, 'val')
 
-print("✅ 转换完成！YOLO 数据保存在:", output_dir)
+print("------转换完成！YOLO 数据保存在:", output_dir)

@@ -15,8 +15,8 @@ object_detection/yolov3/VOCdevkit
 
 *.pt
 
-object_detection/yolov3/runs/train/exp
-object_dectction/yolov3/runs/train/exp
+
+object_dectction/yolov3/runs
 object_dectction/datasets
 *.mp4
 
