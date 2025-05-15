@@ -11,3 +11,5 @@ object_detection/datasets
 object_detection/yolov3/VOCdevkit
 
 *.txt
+*.pt
+object_detection/yolov3/weights
