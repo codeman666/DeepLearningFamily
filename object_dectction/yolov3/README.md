@@ -1,4 +1,4 @@
-# YOLOv3 实战
+# 手把手教你跑通YOLOv3目标检测项目！项目代码+数据集+全流程讲解 
 ***
 # 该项目源自https://github.com/ultralytics/yolov3
 ***
