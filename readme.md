@@ -8,9 +8,9 @@
 * **图像分类**<br><br>
   
   + LeNet (已完成)
-  &#9642; [深度学习入门篇(一):来瞻仰卷积神经网络的鼻祖LeNet](http://mp.weixin.qq.com/s/4Mg0YzBpm9T3YOZIqONMhg)
-  &#9642; [深度学习入门篇(二) 从理论到实战：LeNet代码实现与MNIST数据集训练（PyTorch）](http://mp.weixin.qq.com/s/j0Qx6EEzHWu8oye0SyVk_A)
-  &#9642; [LeNet 论文精读！超详细拆解 + PyTorch 代码复现](https://www.bilibili.com/video/BV17YkwY7EfL)<br><br>
+  - [深度学习入门篇(一):来瞻仰卷积神经网络的鼻祖LeNet](http://mp.weixin.qq.com/s/4Mg0YzBpm9T3YOZIqONMhg)
+  - [深度学习入门篇(二) 从理论到实战：LeNet代码实现与MNIST数据集训练（PyTorch）](http://mp.weixin.qq.com/s/j0Qx6EEzHWu8oye0SyVk_A)
+  - [LeNet 论文精读！超详细拆解 + PyTorch 代码复现](https://www.bilibili.com/video/BV17YkwY7EfL)<br><br>
 
   + AlexNet (已完成)
   &#9642; [经典神经网络超详细(三): AlexNet网络(论文精读+网络详解+代码实战)](http://mp.weixin.qq.com/s/dbWO40BpcXicyvVZW9y6Ag)
