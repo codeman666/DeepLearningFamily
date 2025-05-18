@@ -572,11 +572,11 @@ def parse_opt(known=False):
         * Training Tutorial: https://docs.ultralytics.com/yolov5/tutorials/train_custom_data
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument("--weights", type=str, default=ROOT / "yolov3.pt", help="initial weights path")
+    parser.add_argument("--weights", type=str, default=ROOT / "runs/train/exp3/weights/best.pt", help="initial weights path")
     parser.add_argument("--cfg", type=str, default="yolov3.yaml", help="model.yaml path")
     parser.add_argument("--data", type=str, default=ROOT / "data/my_yolo_data.yaml", help="dataset.yaml path")
     parser.add_argument("--hyp", type=str, default=ROOT / "data/hyps/hyp.scratch-low.yaml", help="hyperparameters path")
-    parser.add_argument("--epochs", type=int, default=1, help="total training epochs")
+    parser.add_argument("--epochs", type=int, default=50, help="total training epochs")
     parser.add_argument("--batch-size", type=int, default=32, help="total batch size for all GPUs, -1 for autobatch")
     parser.add_argument("--imgsz", "--img", "--img-size", type=int, default=416, help="train, val image size (pixels)")
     parser.add_argument("--rect", action="store_true", help="rectangular training")
