@@ -2,7 +2,8 @@ image_classification/rank1_LeNet/data
 *.pyc
 test*
 *.pth
-*.jpg
+
+
 *.png
 *.json
 flower_data
