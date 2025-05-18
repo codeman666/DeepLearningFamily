@@ -5,7 +5,11 @@
 # 1. 环境配置
 * Python 3.7 或 3.8(为了防止出错，大家下载python版本可以和我一致Python=3.13.2)
 * PyTorch ≥ 1.6.0 才能用官方 torch.cuda.amp 混合精度训练。
-*  torch torchvision torchaudio 这三个包手动安装cuda版本的(requirements.txt里面是cpu版本的需要注释掉torchvision和torchaudio)
+*  torch torchvision torchaudio 这三个包手动安装cuda版本的(requirements.txt里面是cpu版本的需要注释掉torchvision和torchaudio)  
+  查看显卡版本：nvidia-smi
+  conda环境安装：conda create -name yolov3  python=3.13.2
+  conda环境激活：conda activate yolov3
+ 
 *  更多环境配置信息，请查看requirements.txt文件
 *  使用gpu训练
 ***
