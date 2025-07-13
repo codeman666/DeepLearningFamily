@@ -99,3 +99,28 @@
   * [YOLOv3算法原理讲解（通俗易懂版）](https://www.bilibili.com/video/BV18iVRzWEEa)
   * [手把手教你跑通YOLOv3目标检测项目！项目代码+数据集+全流程讲解](http://mp.weixin.qq.com/s/iLGMHjz0UppfxCGSiExbHA)<br><br>
 
+**YOLOv4(已完成)**
+* [YOLOv4算法原理讲解（通俗易懂版）](https://www.bilibili.com/video/BV1V9N4zfEw4)
+
+**YOLOv5(已完成)**
+* [YOLOv5算法原理讲解（通俗易懂版）](https://www.bilibili.com/video/BV1mbKAzQEUV)
+
+**YOLOv8(已完成)**
+* [YOLOv8算法原理讲解（通俗易懂版）](https://www.bilibili.com/video/BV1Z2KGzcEkQ)
+
+**YOLOv11(已完成)**
+* [YOLOv11算法原理讲解（通俗易懂版）](https://www.bilibili.com/video/BV1Cb3XzYESz)
+
+**YOLOv12(已完成)**
+* [YOLOv12算法原理讲解（通俗易懂版）](https://www.bilibili.com/video/BV1H6MfzzEp9)
+
+
+## 三、Transformer#大模型
+**注意力机制(已完成)**
+* [注意力机制原理详解](https://www.bilibili.com/video/BV1SUGuz9Ec5)
+
+**self-attention(已完成)**
+* [Self-Attention原理详解](https://www.bilibili.com/video/BV1hFu3zsE9S)
+
+**位置编码(已完成)**
+* [位置编码原理详解](https://www.bilibili.com/video/BV15AMXz6EGL)
