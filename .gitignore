@@ -18,11 +18,10 @@ object_detection/yolov3/VOCdevkit
 
 
 object_dectction/yolov3/runs
-object_dectction/datasets
+object_detection/datasets/my_yolo_data
 *.mp4
 
 __pycache__/
 *.pyc
 *.cache
 
-object_detection/
