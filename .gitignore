@@ -3,7 +3,7 @@ image_classification/rank1_LeNet/data
 test*
 *.pth
 
-object_dectction\datasets\my_yolo_data
+
 
 *.png
 *.json
