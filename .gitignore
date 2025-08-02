@@ -3,12 +3,13 @@ image_classification/rank1_LeNet/data
 test*
 *.pth
 
+object_dectction\datasets\my_yolo_data
 
 *.png
 *.json
 flower_data
 
-object_detection/datasets
+
 object_detection/yolov3/VOCdevkit
 
 *.txt
@@ -18,7 +19,7 @@ object_detection/yolov3/VOCdevkit
 
 
 object_dectction/yolov3/runs
-object_detection/datasets/my_yolo_data
+
 *.mp4
 
 __pycache__/
