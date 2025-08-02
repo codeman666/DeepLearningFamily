@@ -1,0 +1,197 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+# 这里是版权和链接，告诉你这份配置覆盖了：训练 / 验证 / 预测 / 导出 / 跟踪 的所有可用参数。
+# Global configuration YAML with settings and hyperparameters for YOLO training, validation, prediction and export
+# For documentation see https://docs.ultralytics.com/usage/cfg/
+
+# 基础任务和模式
+task: detect # (str) YOLO task, i.e. detect, segment, classify, pose, obb
+mode: train # (str) YOLO mode, i.e. train, val, predict, export, track, benchmark
+
+# Train settings -------------------------------------------------------------------------------------------------------
+# 模型文件或结构配置，如 yolov8n.pt（权重）或 yolov8n.yaml（结构）
+model: # (str, optional) path to model file, i.e. yolov8n.pt, yolov8n.yaml
+# 数据集配置文件，如 coco8.yaml（里面有数据路径、类别）
+data: # (str, optional) path to data file, i.e. coco8.yaml
+# 训练轮数
+epochs: 100 # (int) number of epochs to train for
+# 训练时长（小时），如果设置了就覆盖 epochs
+time: # (float, optional) number of hours to train for, overrides epochs if supplied
+# Early Stopping，多少轮没提升就停，这个参数一般用于防止训练过度浪费时间，或者发生过拟合
+patience: 100 # (int) epochs to wait for no observable improvement for early stopping of training
+# 每批次图片数量（-1 表示自动匹配显存）
+batch: 16 # (int) number of images per batch (-1 for AutoBatch)
+# 输入图像尺寸（可以是 int 或 [h, w]）
+imgsz: 640 # (int | list) input images size as int for train and val modes, or list[h,w] for predict and export modes
+# 是否保存中间权重、结果图
+save: True # (bool) save train checkpoints and predict results
+#  每隔多少轮保存一次权重，<1 表示只保存最终权重
+save_period: -1 # (int) Save checkpoint every x epochs (disabled if < 1)
+# 是否把数据缓存到内存（True/ram）、磁盘（disk），或 False
+cache: False # (bool) True/ram, disk or False. Use cache for data loading
+# 指定用哪个 GPU，比如 0 或 [0,1]，或 "cpu"
+device: # (int | str | list) device: CUDA device=0 or [0,1,2,3] or "cpu/mps" or -1 or [-1,-1] to auto-select idle GPUs
+# DataLoader 的线程数（DDP 时每个 RANK 各用几个）
+workers: 8 # (int) number of worker threads for data loading (per RANK if DDP)
+# 项目名（结果保存在 runs/project/name）
+project: # (str, optional) project name
+# 实验名（文件夹名）
+name: # (str, optional) experiment name, results saved to 'project/name' directory
+# 已存在同名目录时是否覆盖
+exist_ok: False # (bool) whether to overwrite existing experiment
+# 是否使用预训练权重（True）或指定文件（字符串）
+pretrained: True # (bool | str) whether to use a pretrained model (bool) or a model to load weights from (str)
+# 优化器，支持 SGD、Adam、AdamW 等，也可以自动选择
+optimizer: auto # (str) optimizer to use, choices=[SGD, Adam, Adamax, AdamW, NAdam, RAdam, RMSProp, auto]
+# 是否打印详细训练日志
+verbose: True # (bool) whether to print verbose output
+# 随机种子，用于初始化权重，数据增强、数据加载、Dropout
+seed: 0 # (int) random seed for reproducibility
+# 表示是否启用 确定性算法，确保在相同输入和相同随机种子下，模型的每次运行结果完全一致，保证训练的可重复性。
+deterministic: True # (bool) whether to enable deterministic mode
+# 多类别检测或者单类别检测（多类合成一类）
+single_cls: False # (bool) train multi-class data as single-class
+# 在推理（检测）时，是否使用矩形裁剪和缩放保持图片的宽高比。
+rect: False # (bool) rectangular training if mode='train' or rectangular validation if mode='val'
+# 是否使用余弦退火学习率
+cos_lr: False # (bool) use cosine learning rate scheduler
+# 训练时，是否使用 Mosaic 数据增强
+close_mosaic: 10 # (int) disable mosaic augmentation for final epochs (0 to disable)
+# 是否从最近一次 checkpoint 恢复训练，训练过程是否从上一次中断的地方继续
+resume: False # (bool) resume training from last checkpoint
+# 是否使用自动混合精度（AMP）
+amp: True # (bool) Automatic Mixed Precision (AMP) training, choices=[True, False], True runs AMP check
+# # 使用数据集比例（1.0=全部，0.5=一半）
+fraction: 1.0 # (float) dataset fraction to train on (default is 1.0, all images in train set)
+# # 是否在训练时 Profile ONNX、TensorRT 导出
+profile: False # (bool) profile ONNX and TensorRT speeds during training for loggers
+# 冻结前多少层（int）或指定层 index 列表，可以指定层数
+freeze: # (int | list, optional) freeze first n layers, or freeze list of layer indices during training
+# 是否使用多尺度训练
+multi_scale: False # (bool) Whether to use multiscale during training
+# Segmentation
+overlap_mask: True # (bool) merge object masks into a single image mask during training (segment train only)
+mask_ratio: 4 # (int) mask downsample ratio (segment train only)
+# Classification
+# Dropout 概率（仅分类）
+dropout: 0.0 # (float) use dropout regularization (classify train only)
+
+# Val/Test settings ----------------------------------------------------------------------------------------------------
+# 是否在训练时做验证
+val: True # (bool) validate/test during training
+# split 指的是数据集划分，即你选择用哪个子集来进行当前操作。
+split: val # (str) dataset split to use for validation, i.e. 'val', 'test' or 'train'
+# 是否保存结果为 COCO JSON
+save_json: False # (bool) save results to JSON file
+# 置信度阈值（推理默认 0.25，验证默认 0.001）
+conf: # (float, optional) object confidence threshold for detection (default 0.25 predict, 0.001 val)
+# NMS 阈值（IoU）
+iou: 0.7 # (float) intersection over union (IoU) threshold for NMS
+# 每张图最大检测目标数
+max_det: 300 # (int) maximum number of detections per image
+# 是否使用半精度（FP16）
+half: False # (bool) use half precision (FP16)
+# 是否使用 OpenCV DNN（ONNX 用）
+dnn: False # (bool) use OpenCV DNN for ONNX inference
+# 是否保存验证图、混淆矩阵，是否在验证（validation）阶段保存一些可视化图表
+plots: True # (bool) save plots and images during train/val
+
+# Predict settings -----------------------------------------------------------------------------------------------------
+# 预测源
+source: # (str, optional) source directory for images or videos
+# 视频处理时采样帧的间隔，也就是跳帧率。vid_stride: 1 表示处理视频时每一帧都使用（不跳帧）
+vid_stride: 1 # (int) video frame-rate stride
+# 如果你想做实时检测，推荐 stream_buffer: False。
+# 如果你想保存完整帧序列，做后续复杂分析，选 True。
+stream_buffer: False # (bool) buffer all streaming frames (True) or return the most recent frame (False)
+# 是否可视化特征
+visualize: False # (bool) visualize model features
+# 是否启用推理时的数据增强
+augment: False # (bool) apply image augmentation to prediction sources
+# 类别无关的 NMS
+#False 表示使用类别相关的 NMS，即在执行 NMS 时，不同类别的检测框不会相互影响。
+#True 表示使用类别无关的 NMS，所有类别的检测框都一起参与 NMS，不管类别。
+agnostic_nms: False # (bool) class-agnostic NMS
+# # 只检测哪些类别（如 classes=0 或 [0,2,3]）
+classes: # (int | list[int], optional) filter results by class, i.e. classes=0, or classes=[0,2,3]
+retina_masks: False # (bool) use high-resolution segmentation masks
+embed: # (list[int], optional) return feature vectors/embeddings from given layers
+
+# Visualize settings ---------------------------------------------------------------------------------------------------
+# 可视化设置
+# 推理时是否弹窗显示结果
+show: False # (bool) show predicted images and videos if environment allows
+# 是否保存视频帧
+save_frames: False # (bool) save predicted individual video frames
+# 是否保存检测框到 .txt
+save_txt: False # (bool) save results as .txt file
+# 是否保存置信度
+save_conf: False # (bool) save results with confidence scores
+# 是否保存裁剪后的目标
+save_crop: False # (bool) save cropped images with results
+# 是否显示类别标签
+show_labels: True # (bool) show prediction labels, i.e. 'person'
+# 是否显示置信度
+show_conf: True # (bool) show prediction confidence, i.e. '0.99'
+# 是否显示框
+show_boxes: True # (bool) show prediction boxes
+# 检测框线宽（None 表示自适应）
+line_width: # (int, optional) line width of the bounding boxes. Scaled to image size if None.
+
+# Export settings ------------------------------------------------------------------------------------------------------
+format: torchscript # (str) format to export to, choices at https://docs.ultralytics.com/modes/export/#export-formats
+keras: False # (bool) use Kera=s
+optimize: False # (bool) TorchScript: optimize for mobile
+int8: False # (bool) CoreML/TF INT8 quantization
+dynamic: False # (bool) ONNX/TF/TensorRT: dynamic axes
+simplify: True # (bool) ONNX: simplify model using `onnxslim`
+opset: # (int, optional) ONNX: opset version
+workspace: # (float, optional) TensorRT: workspace size (GiB), `None` will let TensorRT auto-allocate memory
+nms: False # (bool) CoreML: add NMS
+
+# 核心超参数
+# Hyperparameters ------------------------------------------------------------------------------------------------------
+# 初始学习率（SGD 1e-2，Adam 1e-3）
+lr0: 0.01 # (float) initial learning rate (i.e. SGD=1E-2, Adam=1E-3)
+# 最终学习率（lr0 * lrf）
+lrf: 0.01 # (float) final learning rate (lr0 * lrf)
+# SGD 动量 / Adam beta1
+momentum: 0.937 # (float) SGD momentum/Adam beta1
+# 权重衰减
+weight_decay: 0.0005 # (float) optimizer weight decay 5e-4
+# 预热轮数
+warmup_epochs: 3.0 # (float) warmup epochs (fractions ok)
+# 预热阶段动量
+warmup_momentum: 0.8 # (float) warmup initial momentum
+# 预热阶段偏置学习率
+warmup_bias_lr: 0.1 # (float) warmup initial bias lr
+box: 7.5 # (float) box loss gain
+cls: 0.5 # (float) cls loss gain (scale with pixels)
+dfl: 1.5 # (float) dfl loss gain
+pose: 12.0 # (float) pose loss gain
+kobj: 1.0 # (float) keypoint obj loss gain
+nbs: 64 # (int) nominal batch size
+hsv_h: 0.015 # (float) image HSV-Hue augmentation (fraction)
+hsv_s: 0.7 # (float) image HSV-Saturation augmentation (fraction)
+hsv_v: 0.4 # (float) image HSV-Value augmentation (fraction)
+degrees: 0.0 # (float) image rotation (+/- deg)
+translate: 0.1 # (float) image translation (+/- fraction)
+scale: 0.5 # (float) image scale (+/- gain)
+shear: 0.0 # (float) image shear (+/- deg)
+perspective: 0.0 # (float) image perspective (+/- fraction), range 0-0.001
+flipud: 0.0 # (float) image flip up-down (probability)
+fliplr: 0.5 # (float) image flip left-right (probability)
+bgr: 0.0 # (float) image channel BGR (probability)
+mosaic: 1.0 # (float) image mosaic (probability)
+mixup: 0.0 # (float) image mixup (probability)
+cutmix: 0.0 # (float) image cutmix (probability)
+copy_paste: 0.0 # (float) segment copy-paste (probability)
+copy_paste_mode: "flip" # (str) the method to do copy_paste augmentation (flip, mixup)
+auto_augment: randaugment # (str) auto augmentation policy for classification (randaugment, autoaugment, augmix)
+erasing: 0.4 # (float) probability of random erasing during classification training (0-0.9), 0 means no erasing, must be less than 1.0.
+
+# Custom config.yaml ---------------------------------------------------------------------------------------------------
+# 覆盖默认配置文件路径比如：models/yolov8n.yaml 或 configs/my_custom.yaml
+cfg: # (str, optional) for overriding defaults.yaml
+
+# Tracker settings ------------------------------------------------------------------------------------------------------
+tracker: botsort.yaml # (str) tracker type, choices=[botsort.yaml, bytetrack.yaml]
