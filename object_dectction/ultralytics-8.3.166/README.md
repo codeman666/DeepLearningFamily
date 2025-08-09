@@ -1,4 +1,9 @@
 # 本项目中的文件对应的是B站中yolo模型改进系列的代码，存放地方，可以根据模型名称找到对应的文件
+
+ultralytics-8.3.166 资料包：
+链接: https://pan.baidu.com/s/1qkgjgy2FJgSthvXguXSobA?pwd=r5jd 提取码: r5jd 
+--来自百度网盘超级会员v1的分享
+
 本文件夹代码对应B站视频：https://space.bilibili.com/3546610390797058/lists/5973198?type=season
 ## 文件使用方法
 直接下载对应的修改的文件即可，不用全部下载ultralytics-8.3.166文件夹，环境搭建请看B站 手把手带你实战ultralytics系列，使用linux系统运行
