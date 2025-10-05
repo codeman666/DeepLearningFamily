@@ -10,7 +10,7 @@ test*
 flower_data
 
 
-object_detection/yolov3/VOCdevkit
+object_dectction/yolov3/VOCdevkit
 
 *.txt
 !requirements.txt

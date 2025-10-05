@@ -1,0 +1,8 @@
+path: ../datasets/yolov11
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 2
+names: ['langren', 'yasuo']
+

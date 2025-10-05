@@ -6,7 +6,7 @@ ultralytics-8.3.166 资料包：
 
 本文件夹代码对应B站视频：https://space.bilibili.com/3546610390797058/lists/5973198?type=season
 ## 文件使用方法
-直接下载对应的修改的文件即可，不用全部下载ultralytics-8.3.166文件夹，环境搭建请看B站 手把手带你实战ultralytics系列，使用linux系统运行
+根据B站视频安装好环境后在官方github下载完整的ultralytics代码，然后直接在我的github下载ultralytics-8.3.166文件夹中对应的修改的文件即可，不要直接全部下载我的github上的ultralytics-8.3.166文件夹的代码(可能会因为路径不同报错！)，环境搭建请看B站 手把手带你实战ultralytics系列，使用linux系统运行
 https://space.bilibili.com/3546610390797058/lists/5857510?type=season
 
 
