@@ -6,6 +6,6 @@
 B站地址：https://space.bilibili.com/3546610390797058
 
 985计算机博士团队接CCF/SCI论文指导
-![alt text](bfd7d922-e62e-4938-b910-c0366c8d2775-1.jpg)
+<img src="bfd7d922-e62e-4938-b910-c0366c8d2775-1.jpg" width="180">
 
 每日分享顶会文章解析在公众号：智算学术
